@@ -1,7 +1,6 @@
-from flask import Flask, jsonify, request
-from models import fetch_player_stats
-
-app = Flask(__name__)
+from run import app
+from flask import jsonify, request
+from .models import fetch_player_stats
 
 
 @app.route('/player-stats', methods=['GET'])
@@ -17,7 +16,3 @@ def get_player_stats_endpoint():
         return jsonify({'error': 'Data not found or error occurred'}), 404
 
     return jsonify(data)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
